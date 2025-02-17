@@ -1,0 +1,16 @@
+name: Validate terraform
+on: [push]
+jobs:
+  Install-terraform-and-perform-its-validations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Install terraform cli
+        uses: hashicorp/setup-terraform@v3
+      - name: Downloading and installing plugins
+        run: terraform init
+      - name: Formating terraform configuration files
+        run: terraform fmt
+      - name: Validating terraform configuration files
+        run: terraform validate
