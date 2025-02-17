@@ -1,16 +1,26 @@
+# Name of the workflow
 name: Validate terraform
-on: [push]
+# Running workflow on pull request
+on: [pull_request]
+
 jobs:
+  # Name of the job
   Install-terraform-and-perform-its-validations:
     runs-on: ubuntu-latest
+
     steps:
+      # Cloning repository to the github workspace
       - name: Check out repository code
         uses: actions/checkout@v4
+      # Installing terraform and setting up its CLI
       - name: Install terraform cli
         uses: hashicorp/setup-terraform@v3
+      # Downloding and installing plugins that are required by the terraform configuration files
       - name: Downloading and installing plugins
         run: terraform init
+      # Formating terraform files recursively (processes files in subdirectory as well)
       - name: Formating terraform configuration files
-        run: terraform fmt
+        run: terraform fmt -recursive
+      # Checking terraform syntax in configuration files is correct or not
       - name: Validating terraform configuration files
         run: terraform validate
