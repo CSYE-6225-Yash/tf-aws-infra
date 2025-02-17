@@ -1,7 +1,10 @@
 # Name of the workflow
 name: Validate terraform
 # Running workflow on pull request
-on: [pull_request]
+on:
+  pull_request:
+    branches:
+      - main
 
 jobs:
   # Name of the job
