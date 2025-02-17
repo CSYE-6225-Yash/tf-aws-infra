@@ -1,6 +1,7 @@
 # First you need to install following packages
 
 aws-cli
+
 terraform
 
 # Configure aws-cli using following steps -
@@ -36,3 +37,15 @@ Following commands are used for seting up infrastucture using terraform -
 `terraform destroy` - This command destroys created infrastructure.
 
 `terraform fmt` - This command formats files in the correct indentation.
+
+Minimum commands to run terraforms are as follows -
+
+`terraform init` - only for first time
+
+Note in below commands variable file is passed directly using -var-file option
+
+`terraform plan -var-file=file_name.tfvars` - This is optional you can also apply it directly
+
+`terraform apply -var-file=file_name.tfvars`
+
+`terraform destroy -var-file=file_name.tfvars` - After seeing infrastructure you can tear it down/ destroy it.
