@@ -27,3 +27,18 @@ variable "availability_zones" {
   description = "Value as a list of strings for availability zones"
   type        = list(string)
 }
+
+variable "internet_gateway_name" {
+  description = "Value for name tag of internet gateway"
+  type        = string
+}
+
+variable "public_route_table_name" {
+  description = "Value for name tag of public route table"
+  type        = string
+}
+
+variable "private_route_table_name" {
+  description = "Value for name tag of private route table"
+  type        = string
+}
