@@ -23,11 +23,6 @@ variable "public_subnet_cider_blocks" {
   type        = list(list(string))
 }
 
-variable "availability_zones" {
-  description = "Value as a list of strings for availability zones"
-  type        = list(string)
-}
-
 variable "internet_gateway_name" {
   description = "Value for name tag of internet gateway"
   type        = string
