@@ -1,6 +1,6 @@
 # First you need to install following packages
 
-aws-cli
+aws-cli  
 
 terraform
 
