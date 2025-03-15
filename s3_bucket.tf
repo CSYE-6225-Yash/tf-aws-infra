@@ -8,8 +8,7 @@ resource "aws_s3_bucket" "my_s3_bucket" {
   force_destroy = true
 
   tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
+    Name        = var.bucket_name
   }
 }
 
@@ -29,15 +28,15 @@ resource "aws_s3_bucket_lifecycle_configuration" "bucket_lifecycle_policies" {
   bucket = aws_s3_bucket.my_s3_bucket.id
 
   rule {
-    id = "move_to_standard_ia"
+    id = var.standard_to_ia_policy_s3.id
 
     filter {}
 
     status = "Enabled"
     
     transition {
-      days          = 30
-      storage_class = "STANDARD_IA"
+      days          = var.standard_to_ia_policy_s3.days
+      storage_class = var.standard_to_ia_policy_s3.storage_class
     }
   }
 }

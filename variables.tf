@@ -82,3 +82,83 @@ variable "instance_volume_type" {
   description = "Value for volume type of the instance"
   type        = string
 }
+
+variable "db_pg_name" {
+  description = "Value for name of the database parameter group"
+  type        = string
+}
+
+variable "db_pg_family" {
+  description = "Value for family of the database parameter group"
+  type        = string
+}
+
+variable "db_engine" {
+  description = "Value for engine of the database"
+  type        = string
+}
+
+variable "db_instance_class" {
+  description = "Value for instance class of the database"
+  type        = string
+}
+
+variable "db_multizone_deployment" {
+  description = "Value for multizone deployment of the database"
+  type        = bool
+}
+
+variable "db_identifier" {
+  description = "Value for id of the database"
+  type        = string
+}
+
+variable "db_username" {
+  description = "Value for username of the database"
+  type        = string
+}
+
+variable "db_password" {
+  description = "Value for password of the database"
+  type        = string
+}
+
+variable "db_subnet" {
+  description = "Value for subnet ( in number ) of the database"
+  type        = number
+}
+
+variable "db_public_accessible" {
+  description = "Value for publically access of the database"
+  type        = bool
+}
+
+variable "dbname" {
+  description = "Value for name of the database"
+  type        = string
+}
+
+variable "bucket_name" {
+  description = "Value for name tag of the s3 bucket"
+  type        = string
+}
+
+variable "standard_to_ia_policy_s3" {
+  description = "Value for days value of the lifecycle policy of s3 to shift to ia"
+  type        = object({id = string, days=number, storage_class=string})
+}
+
+variable "db_security_group_name" {
+  description = "Value for name of the database security group"
+  type        = string
+}
+
+variable "db_security_group_description" {
+  description = "Value for description of the database security group"
+  type        = string
+}
+
+variable "db_security_group_ingress_rule" {
+  description = "Value for ingress rule of security group"
+  type        = list(object({ from_port = number, protocol = string, to_port = number }))
+}
