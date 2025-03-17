@@ -145,7 +145,7 @@ variable "bucket_name" {
 
 variable "standard_to_ia_policy_s3" {
   description = "Value for days value of the lifecycle policy of s3 to shift to ia"
-  type        = object({id = string, days=number, storage_class=string})
+  type        = object({ id = string, days = number, storage_class = string })
 }
 
 variable "db_security_group_name" {
@@ -161,4 +161,9 @@ variable "db_security_group_description" {
 variable "db_security_group_ingress_rule" {
   description = "Value for ingress rule of security group"
   type        = list(object({ from_port = number, protocol = string, to_port = number }))
+}
+
+variable "db_subnet_group_name" {
+  description = "Value for name tag of the database subnet group"
+  type        = string
 }

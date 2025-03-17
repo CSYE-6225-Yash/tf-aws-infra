@@ -20,7 +20,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_webapp_ipv4" {
 }
 
 # Adding egress rule to all ipv4 addresses
-resource "aws_vpc_security_group_egress_rule" "example" {
+resource "aws_vpc_security_group_egress_rule" "allow_webapp_internet_connectivity" {
   security_group_id = aws_security_group.application_security_group.id
 
   cidr_ipv4   = "0.0.0.0/0"
@@ -40,11 +40,12 @@ resource "aws_security_group" "database_security_group" {
   }
 }
 
+# Adding ingress rule to database source from application security group
 resource "aws_vpc_security_group_ingress_rule" "allow_db_access" {
-  security_group_id = aws_security_group.database_security_group.id
+  security_group_id            = aws_security_group.database_security_group.id
   referenced_security_group_id = aws_security_group.application_security_group.id
-  count             = length(var.db_security_group_ingress_rule)
-  from_port         = element(var.db_security_group_ingress_rule[*].from_port, count.index)
-  ip_protocol       = element(var.db_security_group_ingress_rule[*].protocol, count.index)
-  to_port           = element(var.db_security_group_ingress_rule[*].to_port, count.index)
+  count                        = length(var.db_security_group_ingress_rule)
+  from_port                    = element(var.db_security_group_ingress_rule[*].from_port, count.index)
+  ip_protocol                  = element(var.db_security_group_ingress_rule[*].protocol, count.index)
+  to_port                      = element(var.db_security_group_ingress_rule[*].to_port, count.index)
 }
