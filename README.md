@@ -49,3 +49,15 @@ Note in below commands variable file is passed directly using -var-file option
 `terraform apply -var-file=file_name.tfvars`
 
 `terraform destroy -var-file=file_name.tfvars` - After seeing infrastructure you can tear it down/ destroy it.
+
+# Running this terraform will give you following infrastructure -
+
+- vpc : It creates vpc and public and private subnets in it.
+
+- iam role/policy : It also creates iam role and policy for ec2 instance in order for application on ec2 to call this services.
+
+- aws rds instance : It creates rds instance and attaches aws ec2 security group so that it can access this rds using iam roles.
+
+- aws ec2 instance : It creates aws instance by using custom image provided by the variable file while running and also configures security group for it.
+
+- aws s3 bucket : It creaetes aws s3 bucket to store objects provided by the web application.
