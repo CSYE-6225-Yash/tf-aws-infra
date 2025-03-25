@@ -31,6 +31,35 @@ resource "aws_iam_role_policy" "webapp_policy" {
           "arn:aws:rds:::db:${aws_db_instance.mysql_db_instance.db_name}"
         ]
       },
+      {
+        Sid    = "CWACloudWatchServerPermissions",
+        Effect = "Allow",
+        Action = [
+          "cloudwatch:PutMetricData",
+          "ec2:DescribeVolumes",
+          "ec2:DescribeTags",
+          "logs:PutLogEvents",
+          "logs:PutRetentionPolicy",
+          "logs:DescribeLogStreams",
+          "logs:DescribeLogGroups",
+          "logs:CreateLogStream",
+          "logs:CreateLogGroup",
+          "xray:PutTraceSegments",
+          "xray:PutTelemetryRecords",
+          "xray:GetSamplingRules",
+          "xray:GetSamplingTargets",
+          "xray:GetSamplingStatisticSummaries"
+        ],
+        Resource = "*"
+      },
+      {
+        Sid    = "CWASSMServerPermissions",
+        Effect = "Allow",
+        Action = [
+          "ssm:GetParameter"
+        ],
+        Resource = "arn:aws:ssm:*:*:parameter/AmazonCloudWatch-*"
+      }
     ]
   })
 }
