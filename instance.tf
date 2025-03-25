@@ -18,6 +18,7 @@ echo "DATABASE_Host=${aws_db_instance.mysql_db_instance.address}" >> .env
 echo "DATABASE_PORT=${aws_db_instance.mysql_db_instance.port}" >> .env
 echo "BUCKET_NAME=${aws_s3_bucket.my_s3_bucket.id}" >> .env
 sudo systemctl start webapp.service
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/cloudwatch-agent-config.json
   EOF
 
   root_block_device {
