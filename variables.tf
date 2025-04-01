@@ -167,3 +167,63 @@ variable "db_subnet_group_name" {
   description = "Value for name tag of the database subnet group"
   type        = string
 }
+
+variable "load_balancer_security_group_name" {
+  description = "Value for name tag of the load balancer security group"
+  type        = string
+}
+
+variable "load_balancer_security_group_description" {
+  description = "Value for description of the load balancer security group"
+  type        = string
+}
+
+variable "load_balancer_security_group_ingress_rule" {
+  description = "Value for ingress rule for load balancer"
+  type        = list(object({ from_port = number, protocol = string, to_port = number }))
+}
+
+variable "ssh_key_name" {
+  description = "Value for key name for ec2 instances"
+  type        = string
+}
+
+variable "launch_template_name" {
+  description = "Value for name for launch template"
+  type        = string
+}
+
+variable "autoscaling_group_name" {
+  description = "Value for name for autoscaling group"
+  type        = string
+}
+
+variable "autoscaling_group_cooldown" {
+  description = "Value for cooldown for autoscaling group"
+  type        = number
+}
+
+variable "autoscalling_group_min_size" {
+  description = "Value for min size for autoscaling group"
+  type        = number
+}
+
+variable "autoscalling_group_max_size" {
+  description = "Value for max size for autoscaling group"
+  type        = number
+}
+
+variable "autoscalling_group_desired_capacity" {
+  description = "Value for desired capacity for autoscaling group"
+  type        = number
+}
+
+variable "webapp_dns_zone_id" {
+  description = "Value for zone id for webapp dns"
+  type        = string
+}
+
+variable "webapp_domain_name" {
+  description = "Value for domain name for webapp"
+  type        = string
+}
