@@ -7,7 +7,6 @@ resource "aws_launch_template" "webapp_launch_template" {
 
   network_interfaces {
     associate_public_ip_address = true
-    subnet_id                   = element(aws_subnet.public_subnets[*].id, var.instance_subnet)
     security_groups             = [aws_security_group.application_security_group.id]
   }
 
