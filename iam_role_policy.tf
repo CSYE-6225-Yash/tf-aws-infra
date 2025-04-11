@@ -59,6 +59,31 @@ resource "aws_iam_role_policy" "webapp_policy" {
           "ssm:GetParameter"
         ],
         Resource = "arn:aws:ssm:*:*:parameter/AmazonCloudWatch-*"
+      },
+      {
+        Sid    = "SecretManagerPermissions",
+        Effect = "Allow",
+        Action = [
+          "secretsmanager:GetSecretValue"
+        ],
+        Resource = "${aws_secretsmanager_secret.db_secret.arn}"
+      },
+      {
+        Sid    = "SecretKmsKeyDecryptPermission",
+        Effect = "Allow",
+        Action = [
+          "kms:Decrypt"
+        ],
+        Resource = "${aws_kms_key.secret_manager_key.arn}"
+      },
+      {
+        Sid    = "AllowS3KmsKeysAccess"
+        Effect = "Allow",
+        Action = [
+          "kms:GenerateDataKey",
+          "kms:Decrypt"
+        ],
+        Resource = "${aws_kms_key.s3_key.arn}"
       }
     ]
   })

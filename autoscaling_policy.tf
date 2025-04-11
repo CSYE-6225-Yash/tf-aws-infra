@@ -33,7 +33,7 @@ resource "aws_cloudwatch_metric_alarm" "webapp_cpu_utilization_above_9" {
 
 # Creating cloudwatch metric alarm for webapp cpu utilization decrease below 8%
 resource "aws_cloudwatch_metric_alarm" "webapp_cpu_utilization_below_8" {
-  alarm_name          = "webapp-cpu-utilization-below7"
+  alarm_name          = "webapp-cpu-utilization-below8"
   comparison_operator = "LessThanThreshold"
   evaluation_periods  = 2
   metric_name         = "CPUUtilization"
