@@ -9,7 +9,8 @@ resource "aws_autoscaling_group" "webapp_autoscaling_group" {
   vpc_zone_identifier = aws_subnet.public_subnets[*].id
 
   launch_template {
-    id = aws_launch_template.webapp_launch_template.id
+    id      = aws_launch_template.webapp_launch_template.id
+    version = "$Latest"
   }
 
   tag {

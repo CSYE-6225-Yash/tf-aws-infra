@@ -61,3 +61,11 @@ Note in below commands variable file is passed directly using -var-file option
 - aws ec2 instance : It creates aws instance by using custom image provided by the variable file while running and also configures security group for it.
 
 - aws s3 bucket : It creaetes aws s3 bucket to store objects provided by the web application.
+
+# Command to import ssl certificate using aws cli
+
+- Here I have used ssl certificate from name cheap so in my case certificate file is with the extension .crt and certificate-chain is with the extension .ca-bundle and key file has extension .key(generated with openssh)
+
+`aws acm import-certificate --certificate fileb://your_certificate.crt --certificate-chain fileb://your_certificate_chain_file.ca-bundle --private-key fileb://your_private_key.key`
+
+- Note that this files also could be .pem files as stated in the official aws documentation.

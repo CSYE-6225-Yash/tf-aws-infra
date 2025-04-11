@@ -118,11 +118,6 @@ variable "db_username" {
   type        = string
 }
 
-variable "db_password" {
-  description = "Value for password of the database"
-  type        = string
-}
-
 variable "db_subnet" {
   description = "Value for subnet ( in number ) of the database"
   type        = number
@@ -225,5 +220,10 @@ variable "webapp_dns_zone_id" {
 
 variable "webapp_domain_name" {
   description = "Value for domain name for webapp"
+  type        = string
+}
+
+variable "ssl_certificate_arn" {
+  description = "Value for ssl certificate arn for webapp"
   type        = string
 }

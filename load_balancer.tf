@@ -21,8 +21,10 @@ resource "aws_lb_target_group" "webapp_target_group" {
 # Creating load balancer listener
 resource "aws_lb_listener" "front_end" {
   load_balancer_arn = aws_lb.webapp_load_balancer.arn
-  port              = "80"
-  protocol          = "HTTP"
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = var.ssl_certificate_arn
 
   default_action {
     type             = "forward"
